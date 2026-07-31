@@ -31,7 +31,6 @@ function App() {
   useEffect(()=>{document.body.style.overflow=(video||exit||apply)?'hidden':''},[video,exit,apply])
   const submit=(e,type)=>{e.preventDefault();setSent(type)}
   return <div className="site">
-    <div className="announce"><span><i/>Enrollment is open for six months of Advanced 1-on-1 Coaching.</span><a href="#coaching">Apply & Book a Call <ArrowRight size={13}/></a></div>
 
     <main>
       <section className="hero grid-bg" id="home"><div className="glow"/><div className="container hero-grid"><div className="hero-copy"><h1>Tired of Blowing Accounts and Starting Over? <em>Watch the Video Below.</em></h1><p>Go from confused and inconsistent to trading with a clear strategy, defined rules, stronger risk management, and confidence.</p></div><div className="hero-media"><span className="terminal"><i/> WVA PRIVATE COACHING · PERSONALIZED ROADMAP</span><button className="video" onClick={()=>setVideo(true)}><Chart large/><div className="silhouette"><i/><b/></div><div className="video-copy"><small>FOUNDER PRESENTATION · 08:42</small><strong>The Advanced<br/>Coaching Roadmap</strong><span><Play fill="currentColor"/></span></div></button><small className="risk"><ShieldCheck/> Coaching provides education and accountability—not guaranteed trading outcomes. Trading involves substantial risk.</small></div></div></section>
