@@ -4,7 +4,7 @@ import {
 } from 'lucide-react'
 import './App.css'
 
-const innerCircleUrl = 'https://whop.com/wealthy-visions-academy/wva-inner-circle/'
+const innerCircleUrl = 'https://whop.com/checkout/plan_tvEu6o0oWLJYQ'
 const Button = ({ children, href = '#coaching', alt = false, gold = false }) => <a className={`btn ${alt ? 'alt' : ''} ${gold ? 'gold' : ''}`} href={href}>{children}<ArrowRight size={16}/></a>
 const Head = ({ over, title, copy, center = false }) => <div className={`head ${center ? 'center' : ''}`}><span className="eyebrow">{over}</span><h2>{title}</h2>{copy && <p>{copy}</p>}</div>
 const List = ({ items, muted = false }) => <ul className={`ticks ${muted ? 'muted' : ''}`}>{items.map(x => <li key={x}><Check size={15}/>{x}</li>)}</ul>
