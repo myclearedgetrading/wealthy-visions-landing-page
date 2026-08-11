@@ -24,11 +24,10 @@ function Form({ coaching = false, onSubmit }) {
 }
 
 function App() {
-  const [video,setVideo]=useState(false), [exit,setExit]=useState(false), [apply,setApply]=useState(false)
+  const [video,setVideo]=useState(false), [apply,setApply]=useState(false)
   const [sent,setSent]=useState('')
-  useEffect(()=>{const leave=e=>{if(e.clientY<=0&&!sessionStorage.wvExit){sessionStorage.wvExit='1';setExit(true)}};document.addEventListener('mouseleave',leave);return()=>document.removeEventListener('mouseleave',leave)},[])
-  useEffect(()=>{const openApplication=()=>{if(window.location.hash==='#coaching'){setExit(false);setApply(true)}};openApplication();window.addEventListener('hashchange',openApplication);return()=>window.removeEventListener('hashchange',openApplication)},[])
-  useEffect(()=>{document.body.style.overflow=(video||exit||apply)?'hidden':''},[video,exit,apply])
+  useEffect(()=>{const openApplication=()=>{if(window.location.hash==='#coaching')setApply(true)};openApplication();window.addEventListener('hashchange',openApplication);return()=>window.removeEventListener('hashchange',openApplication)},[])
+  useEffect(()=>{document.body.style.overflow=(video||apply)?'hidden':''},[video,apply])
   const submit=(e,type)=>{e.preventDefault();setSent(type)}
   return <div className="site">
 
@@ -45,7 +44,6 @@ function App() {
 
     {apply&&<div className="modal" role="dialog" aria-modal="true" aria-label="Advanced coaching application"><div className="application-modal"><button className="close" onClick={()=>{setApply(false);history.replaceState(null,'',window.location.pathname+window.location.search)}}><X/></button>{sent==='coach'?<div className="calendar-gate"><div className="form-progress complete"><span>STEP 2 OF 2</span><i/></div><Check/><h3>Application complete. Book your call.</h3><p>Your calendar embed will appear here after the booking link is connected.</p><div className="calendar-placeholder"><span>PRIVATE BOOKING CALENDAR</span><strong>Connect your Calendly, Cal.com, or Typeform scheduling URL</strong><button disabled>Calendar link required</button></div></div>:<Form coaching onSubmit={e=>submit(e,'coach')}/>}</div></div>}
     {video&&<div className="modal" role="dialog" aria-modal="true"><button className="close" onClick={()=>setVideo(false)}><X/></button><div className="video-modal"><div><Play fill="currentColor"/><h3>The Advanced Coaching Roadmap</h3><p>Connect the official Abel Melendez video embed before publishing.</p></div></div></div>}
-    {exit&&<div className="modal" role="dialog" aria-modal="true"><div className="exit"><button className="close" onClick={()=>setExit(false)}><X/></button><span className="eyebrow">BEFORE YOU GO</span><h2>Ready for Direct Trading Guidance?</h2><p>Complete the short coaching application to unlock the private call-booking calendar.</p><Button href="#coaching">Apply & Book a Call</Button><button className="text-btn" onClick={()=>setExit(false)}>No thanks, I’ll keep browsing</button></div></div>}
   </div>
 }
 
