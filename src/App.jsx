@@ -1,18 +1,10 @@
 import { useEffect, useState } from 'react'
 import {
-  ArrowRight, Check, Crown, Play, ShieldCheck, Target, X,
+  ArrowRight, Check, Play, ShieldCheck, X,
 } from 'lucide-react'
 import './App.css'
 
-const innerCircleUrl = 'https://whop.com/checkout/plan_tvEu6o0oWLJYQ'
-const Button = ({ children, href = '#coaching', alt = false, gold = false }) => <a className={`btn ${alt ? 'alt' : ''} ${gold ? 'gold' : ''}`} href={href}>{children}<ArrowRight size={16}/></a>
 const Head = ({ over, title, copy, center = false }) => <div className={`head ${center ? 'center' : ''}`}><span className="eyebrow">{over}</span><h2>{title}</h2>{copy && <p>{copy}</p>}</div>
-const List = ({ items, muted = false }) => <ul className={`ticks ${muted ? 'muted' : ''}`}>{items.map(x => <li key={x}><Check size={15}/>{x}</li>)}</ul>
-
-const programs = [
-  ['INNER CIRCLE',Crown,'Ongoing live education, market preparation, resources, and community accountability.',['Daily live trading sessions','Institutional market bias','Trade setups and breakdowns','Complete course library','Strategy vault and playbooks','Weekly market overview','Replay library and community'],'Join the Inner Circle',innerCircleUrl,'','$79 / MONTH'],
-  ['ADVANCED 1-ON-1 COACHING',Target,'Six months of personalized development for traders who want direct guidance, trade review, and accountability.',['Six months of 1-on-1 coaching','Customized trading roadmap','Private trade and performance reviews','Risk and psychology coaching','Strategy execution feedback','Direct support and accountability','Lifetime access to WVA programs'],'Apply & Book a Call','#coaching','featured gold','$1,200 · 6 MONTHS'],
-]
 
 function Form({ coaching = false, onSubmit }) {
   const params = new URLSearchParams(window.location.search)
@@ -29,11 +21,55 @@ function App() {
   return <div className="site">
 
     <main>
-      <section className="hero grid-bg" id="home"><div className="glow"/><div className="container hero-grid"><div className="hero-copy"><h1>Tired of Blowing Accounts and Starting Over? <em>Watch the Video Below.</em></h1><p>Go from confused and inconsistent to trading with a clear strategy, defined rules, stronger risk management, and confidence.</p></div><div className="hero-media"><button className="video" onClick={()=>setVideo(true)} aria-label="Play the Wealthy Visions video"><img src="/vsl-thumbnail.png?v=3" alt="Why you keep blowing accounts — watch the video"/><span className="play-pulse" aria-hidden="true"><Play fill="currentColor" size={36}/></span></button><small className="risk"><ShieldCheck/> Coaching provides education and accountability—not guaranteed trading outcomes. Trading involves substantial risk.</small></div></div></section>
+      <section className="hero grid-bg" id="home">
+        <div className="glow"/>
+        <div className="container hero-grid">
+          <div className="hero-copy">
+            <h1>Tired of Blowing Accounts and Starting Over? <em>Watch the Video Below.</em></h1>
+            <p>Go from confused and inconsistent to trading with a clear strategy, defined rules, stronger risk management, and confidence.</p>
+          </div>
+          <div className="hero-media">
+            <button className="video" onClick={()=>setVideo(true)} aria-label="Play the Wealthy Visions video">
+              <img src="/vsl-thumbnail.png?v=3" alt="Why you keep blowing accounts — watch the video"/>
+              <span className="play-pulse" aria-hidden="true"><Play fill="currentColor" size={36}/></span>
+            </button>
+            <div className="typeform-mock" id="apply">
+              <div className="typeform-mock-head">
+                <span>APPLICATION FORM</span>
+                <small>Mock preview · Typeform embed goes here</small>
+              </div>
+              {sent === 'hero' ? (
+                <div className="typeform-mock-success">
+                  <Check/>
+                  <h3>Application received.</h3>
+                  <p>This is a mock confirmation. Replace this block with your Typeform embed when ready.</p>
+                </div>
+              ) : (
+                <form className="form typeform" onSubmit={(e) => submit(e, 'hero')}>
+                  <h3>Ready to stop repeating the same trading mistakes?</h3>
+                  <p>Complete this short application to book a call and see if Advanced Coaching is the right fit.</p>
+                  <label>What is your full name?<input required placeholder="Type your answer here"/></label>
+                  <label>What is your best email address?<input required type="email" placeholder="name@email.com"/></label>
+                  <label>How long have you been trading?
+                    <select required defaultValue="">
+                      <option value="" disabled>Select your experience</option>
+                      <option>Under 1 year</option>
+                      <option>1–3 years</option>
+                      <option>3+ years</option>
+                    </select>
+                  </label>
+                  <label>What is your biggest trading challenge right now?<textarea required placeholder="Be honest — this helps Abel prepare for the call."/></label>
+                  <button className="btn" type="submit">Apply & Book a Call <ArrowRight size={16}/></button>
+                  <small>Mock form only. Submissions are not saved until Typeform and Close are connected.</small>
+                </form>
+              )}
+            </div>
+            <small className="risk"><ShieldCheck/> Coaching provides education and accountability—not guaranteed trading outcomes. Trading involves substantial risk.</small>
+          </div>
+        </div>
+      </section>
 
       <section className="section founder" id="about"><div className="container founder-grid"><div className="portrait"><img src="/abel-melendez-founder.png" alt="Abel Melendez, founder of Wealthy Visions"/><div><b>TRADING SINCE</b><strong>2015</strong></div></div><div><Head over="MEET THE FOUNDER" title="Helping Traders Replace Confusion With Structure."/><p>Abel Melendez is a trader, educator, and founder of Wealthy Visions Academy. Since beginning his trading journey in 2015, he has gained experience across forex and futures while helping traders understand liquidity, market structure, risk management, and disciplined execution.</p><p>After seeing traders repeatedly struggle with strategy hopping, emotional decisions, and blown accounts, Abel created Wealthy Visions to provide direct guidance, honest feedback, and accountability—not more noise.</p><p>His mission is to help traders refine what they already know, correct the habits holding them back, and build a clear process they can execute independently.</p><div className="signature">Abel Melendez <span>— Founder, Wealthy Visions</span></div></div></div></section>
-
-      <section className="section ecosystem grid-bg" id="inner-circle"><div className="container"><Head over="TWO WAYS TO WORK WITH WVA" title="Choose the Support That Fits Your Development." copy="Apply for private one-on-one coaching or join the Inner Circle for live group education, resources, and community." center/><div className="program-grid">{programs.map(([name,Icon,best,items,cta,href,style,price])=><article className={style||''} key={name}>{style?.includes('featured')&&<span className="popular">FLAGSHIP OFFER</span>}<Icon className="program-icon"/><small>{name}</small><h3>{price}</h3><p>{best}</p><List items={items}/><Button alt={!style?.includes('featured')&&!style?.includes('gold')} gold={style?.includes('gold')} href={href}>{cta}</Button>{style?.includes('gold')&&<i className="note">Designed for traders prepared to commit to six months of guided development.</i>}</article>)}</div></div></section>
 
     </main>
 
