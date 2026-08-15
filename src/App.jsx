@@ -25,7 +25,7 @@ function App() {
         <div className="glow"/>
         <div className="container hero-grid">
           <div className="hero-copy">
-            <h1>Tired of Blowing Accounts and Starting Over? <em>Watch the Video Below.</em></h1>
+            <h1>The Profitable Trader Blueprint: How I Identify, Confirm & Execute Trades Without Guessing</h1>
             <p>Go from confused and inconsistent to trading with a clear strategy, defined rules, stronger risk management, and confidence.</p>
           </div>
           <div className="hero-media">
