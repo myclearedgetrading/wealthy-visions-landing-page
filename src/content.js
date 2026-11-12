@@ -17,7 +17,6 @@ export const nav = [
   { label: 'About', href: '#about' },
   { label: 'Our Approach', href: '#approach' },
   { label: 'Opportunities', href: '#opportunities' },
-  { label: 'Meet the Team', href: '#team' },
   { label: 'FAQ', href: '#faq' },
 ]
 
@@ -134,6 +133,7 @@ export const inside = [
 
 export const mantra = ['One market.', 'One session.', 'One model.', 'One journal.', 'One community.']
 
+/** Kept for when the Meet the Team section returns. */
 export const founder = {
   name: 'Abel Melendez',
   role: 'Founder, Wealthy Visions Academy',

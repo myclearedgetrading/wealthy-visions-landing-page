@@ -39,7 +39,7 @@
   color: var(--white); margin: 0 0 18px;
 }
 .head h2, .final h2 { font-size: clamp(34px, 4vw, 52px); line-height: 1.08; }
-.head p, .hero-copy > p, .final p, .founder-grid p, .legal p {
+.head p, .hero-copy > p, .final p, .legal p {
   color: var(--text); font-size: 17px; line-height: 1.7; margin: 0 0 16px;
 }
 .head p:last-child { margin-bottom: 0; }
@@ -154,21 +154,8 @@ header {
 .opp-card .best span { display: block; color: var(--gold); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
 .opp-card .btn { margin-top: 20px; align-self: flex-start; }
 
-.founder-grid { display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: center; }
-.founder-panel {
-  min-height: 320px; border-radius: 20px; border: 1px solid var(--line);
-  background:
-    radial-gradient(circle at 50% 20%, rgba(0, 255, 144, .16), transparent 46%),
-    #101412;
-  display: flex; flex-direction: column; justify-content: flex-end; padding: 28px;
-}
-.founder-panel img { width: 64px; height: 64px; border-radius: 14px; margin-bottom: auto; }
-.founder-panel p { margin: 0; color: var(--white); font: 800 28px/1.1 Manrope, sans-serif; }
-.founder-panel span { color: var(--green); font-weight: 700; margin-top: 8px; }
 blockquote { margin: 0; padding: 0 0 0 22px; border-left: 2px solid var(--green); }
 blockquote p { margin: 0; color: #dce3df; font-size: 18px; line-height: 1.7; }
-.signature { margin: 22px 0 0; color: var(--white); font-weight: 700; }
-.signature span { color: var(--muted); font-weight: 500; }
 
 .quote-card blockquote { border: 0; padding: 0; }
 .quote-card figcaption { margin-top: 16px; color: var(--white); font-weight: 700; }
@@ -222,7 +209,7 @@ section[id] { scroll-margin-top: 92px; }
   .nav nav.open { transform: none; visibility: visible; }
   .nav nav > a:not(.btn) { padding: 14px 6px; font-size: 16px; border-bottom: 1px solid var(--line); }
   .nav .btn { margin-top: 16px; }
-  .hero-grid, .about-grid, .founder-grid { grid-template-columns: 1fr; gap: 36px; }
+  .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 36px; }
   .feature-grid.four { grid-template-columns: repeat(2, 1fr); }
   .card-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -237,7 +224,6 @@ section[id] { scroll-margin-top: 92px; }
   .final-card { padding: 40px 22px; }
   .footer-top { flex-direction: column; }
   .buttons .btn { width: 100%; }
-  .founder-panel { min-height: 240px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

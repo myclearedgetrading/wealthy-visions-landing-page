@@ -4,7 +4,6 @@ import {
   cftcDisclosure,
   draftDisclosure,
   faqs,
-  founder,
   fullDisclosure,
   inside,
   links,
@@ -256,25 +255,6 @@ function App() {
                   <p>{item.copy}</p>
                 </article>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section band" id="team">
-          <div className="container founder-grid">
-            <div className="founder-panel">
-              <img src="/favicon.png" alt="" width="64" height="64" />
-              <p>{founder.name}</p>
-              <span>{founder.role}</span>
-            </div>
-            <div>
-              <div className="head">
-                <h2>Built by Traders Who Understand the Journey.</h2>
-              </div>
-              <blockquote>
-                <p>{founder.quote}</p>
-              </blockquote>
-              <p className="signature">{founder.name} <span>— {founder.role}</span></p>
             </div>
           </div>
         </section>
